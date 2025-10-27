@@ -1,54 +1,150 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INEC</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>INEC</title>
+<link rel="stylesheet" href="index.css">
+<style>
+  :root { --g: #111; --m:#555; --bg:#fafafa; }
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",Arial,sans-serif;margin:0;background:var(--bg);color:var(--g)}
+  header,footer{max-width:920px;margin:24px auto;padding:0 16px}
+  main{max-width:920px;margin:0 auto 40px;padding:0 16px}
+  h1{font-size:24px;margin:8px 0 2px}
+h1 {
+  font-size: 24px;
+  margin: 8px 0 2px;
+  color: #FF8000;
+  text-align: center;
+}
+
+
+
+  h2{font-size:14px;
+    color:var(--m);
+    margin:0 0 16px;
+      color: #FF8000;
+  text-align: center}
+
+
+  table{width:100%;border-collapse:collapse;background:#fff}
+  th,td{border-top:1px solid #ddd;padding:8px 10px;text-align:left;font-size:14px;vertical-align:top}
+  thead th{background:#f3f3f3;font-weight:600}
+  tfoot td{background:#f9f9f9;font-weight:600}
+  .meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:8px;margin:12px 0 18px}
+  .box{background:#fff;border:1px solid #e5e5e5;border-radius:10px;padding:10px;font-size:13px}
+  .btn{display:inline-block;border:1px solid #111;padding:8px 12px;border-radius:10px;text-decoration:none;color:#111}
+  .right{float:right}
+  @media print{.no-print{display:none} body{background:#fff} table{page-break-inside:auto} tr{page-break-inside:avoid}}
+</style>
+
 <header>
-    <h1>ENIGHUR</h1>
+  <h2>HOJA DE RUTA EN COMISIÓN</h2>
+
+  <div class="meta">
+    <div class="box">
+      <div><b>FECHA:</b> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 7/10/2025 </div>
+      <div><b>A ORDEN DE:</b> Ing. Luis Fonseca </div>
+      <div><b>Conductor:</b> &nbsp; &nbsp; Gerardo Pilla</div>
+    </div>
+    <div class="box">
+      <div><b>TIPO DE VEHÍCULO:</b> Camioneta 4 x 2 </div>
+      <div><b>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; PLACA:</b> &nbsp; &nbsp; &nbsp; TBH-7465</div>
+      <div><b>ORDEN DE MOVILIZACIÓN No.:</b> _________ </div>
+    </div>
+  </div>
+
+
 </header>
-<!--{<main>} Es para crear un borde -->
-<!-- <main> -->
-<section>
-<h2>HOJA DE RUTA</h2>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
-        .pdf-page {
-            margin: 20px 0;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
-    <!-- Mostrar páginas como imágenes -->
-    <div class="pdf-page">
-        <img src="pdfs/hojaderuta1.png" alt="Página 1 del documento">
-    </div>
-    <div class="pdf-page">
-        <img src="pdfs/hojaderuta2.png" alt="Página 2 del documento">
-    </div>
-    
-    <ul>
-        <li>
-            <a href="pdfs/hojaderuta.pdf" download="documento1.pdf">Descargar esta hoja de ruta en formato PDF</a>
-        </li>
-    </ul>
-</section>
-<!--</main>-->
+
+<main>
+  <table id="tabla">
+    <thead>
+      <tr>
+        <th> &nbsp; &nbsp; &nbsp; # <br>ORDEN</th>
+        <th> &nbsp; &nbsp; Fecha</th>
+        <th> &nbsp; &nbsp; &nbsp;DE</th>
+        <th> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; A</th>
+        <th>Hora salida</th>
+        <th>KM salida</th>
+        <th>Hora llegada</th>
+        <th>KM llegada</th>
+        <th>Kms recorridos</th>
+      </tr>
+    </thead>
+    <tbody id="rows"></tbody>
+  </table>
+
+  <section style="margin-top:18px">
+    <h3>Observaciones</h3>
+    <div class="box" style="min-height:80px">____________________</div>
+  </section>
+</main>
 <footer>
-    <p>© 2025 INEC</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+    <div><div style="height:60px"></div><div>Gerardo Pilla</div><div style="border-top:1px solid #222;padding-top:4px">El conductor</div><div>CC # 180402663-9</div></div>
+    <div><div style="height:60px"></div><div>Ing. Luis Fonseca</div><div style="border-top:1px solid #222;padding-top:4px">El jefe de la comisión</div><div>CC #</div></div>
+  </div>
+  <div style="margin-top:12px;color:#777;font-size:12px">© 2025 INEC</div>
 </footer>
-<br>
+
+<script>
+const DATA = [
+  // Marca y verifica cada valor con tu hoja.
+  {orden:"1", fecha:"7/10/2025", de:"Ambato", destinos:"Quito", hs:"14H30", kms:238409, hl:"17H00", kml:238540, rec:131},
+  {orden:"2", fecha:"14/10/2025", de:"Ambato", destinos:"Riobamba → Gatazo Grande → Licán", hs:"7H00", kms:238969, hl:"19H00", kml:239060, rec:91},
+  {orden:"3", fecha:"15/10/2025", de:"Licán", destinos:"Gatazo Zambrano → Calpi → Licán", hs:"9H00", kms:239060, hl:"20H00", kml:239134, rec:74},
+  {orden:"4", fecha:"16/10/2025", de:"Licán", destinos:"Calpi → Palacio Real → Licán", hs:"8H30", kms:239134, hl:"17H30", kml:239209, rec:75},
+  {orden:"5", fecha:"17/10/2025", de:"Licán", destinos:"Gatazo Zambrano → SAN JUAN → Licán", hs:"8H00", kms:239209, hl:"20H33", kml:239312, rec:103},
+  {orden:"6", fecha:"18/10/2025", de:"Licán", destinos:"Cunduana → Gatazo Grande → Licán", hs:"8H30", kms:239312, hl:"19H00", kml:239403, rec:91},
+  {orden:"7", fecha:"19/10/2025", de:"Licán", destinos:"Mishquillí → Cunduana → Licán", hs:"10H00", kms:239403, hl:"18H00", kml:239487, rec:84},
+  {orden:"8", fecha:"20/10/2025", de:"Licán", destinos:"SAN JUAN → Palacio Real → Licán", hs:"8H00", kms:239487, hl:"19H00", kml:239534, rec:47},
+  {orden:"9", fecha:"21/10/2025", de:"Licán", destinos:"Asunción → Cunduana → Licán", hs:"8H00", kms:239534, hl:"17H00", kml:239621, rec:87},
+  {orden:"10", fecha:"22/10/2025", de:"Licán", destinos:"Riobamba → Licán", hs:"12H00", kms:239621, hl:"14H30", kml:239650, rec:29},
+  {orden:"11", fecha:"23/10/2025", de:"Licán", destinos:"Ambato", hs:"12H00", kms:239650, hl:"20H00", kml:239769, rec:119},
+  {orden:"12", fecha:"20/10/2025", de:"Riobamba", destinos:"Ambato", hs:"14H00", kms:239819, hl:"16H00", kml:239873, rec:54},
+ 
+
+  
+];
+
+function render(){
+  const tbody = document.getElementById('rows');
+  tbody.innerHTML = "";
+  let g=0, v=0;
+  for(const r of DATA){
+    const tr = document.createElement('tr');
+    const cells = [
+      r.orden, r.fecha, r.de, r.destinos, r.hs||"", 
+      (r.kms??"").toString(), r.hl||"", (r.kml??"").toString(),
+      (r.rec??"").toString(), 
+    ];
+    for(const c of cells){
+      const td = document.createElement('td');
+      td.textContent = c;
+      tr.appendChild(td);
+    }
+    tbody.appendChild(tr);
+    g += Number(r.gal||0);
+    v += Number((r.usd||0));
+  }
+  document.getElementById('tot_gal').textContent = g.toLocaleString('es-EC');
+  document.getElementById('tot_val').textContent = v.toLocaleString('es-EC',{minimumFractionDigits:2,maximumFractionDigits:2});
+}
+render();
+</script>
+  <a class="btn no-print" href="#" onclick="window.print()">Descargar esta hoja en PDF</a>
+<br><br><br>
+<!--Solo tienes que ser Persitente-->
 <h6>
-    <!--home page = página de inicio-->
-    <a href="https://VDLPYL.github.io/VDLPYL">VDLPYL</a>
+  <!--hoja-->
+  <a href="https://VDLPYL.github.io/VDLPYL-inec/hoja/hojaderutaencomision">HOJA DE RUTA EN COMISIÓN</a>
+<br><br><br><br>
+  <!--espac grupo 8 1ra jornada-->
+  <a href="https://VDLPYL.github.io/VDLPYL-inec/hoja/espac">ESPAC grupo 8 - 1ra jornada</a>
+<br><br><br><br>
+
+<!--Página de inicio-->
+  <a href="https://VDLPYL.github.io/VDLPYL">VDLPYL</a>
 </h6>
-</body>
+
 </html>

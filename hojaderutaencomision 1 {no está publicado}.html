@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="es">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>INEC • Hoja de ruta en comisión</title>
+<style>
+  :root { --g: #111; --m:#555; --bg:#fafafa; }
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",Arial,sans-serif;margin:0;background:var(--bg);color:var(--g)}
+  header,footer{max-width:920px;margin:24px auto;padding:0 16px}
+  main{max-width:920px;margin:0 auto 40px;padding:0 16px}
+  h1{font-size:24px;margin:8px 0 2px}
+  h2{font-size:14px;color:var(--m);margin:0 0 16px}
+  table{width:100%;border-collapse:collapse;background:#fff}
+  th,td{border-top:1px solid #ddd;padding:8px 10px;text-align:left;font-size:14px;vertical-align:top}
+  thead th{background:#f3f3f3;font-weight:600}
+  tfoot td{background:#f9f9f9;font-weight:600}
+  .meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:8px;margin:12px 0 18px}
+  .box{background:#fff;border:1px solid #e5e5e5;border-radius:10px;padding:10px;font-size:13px}
+  .btn{display:inline-block;border:1px solid #111;padding:8px 12px;border-radius:10px;text-decoration:none;color:#111}
+  .right{float:right}
+  @media print{.no-print{display:none} body{background:#fff} table{page-break-inside:auto} tr{page-break-inside:avoid}}
+</style>
+
+<header>
+  <h1>INEC</h1>
+  <h2>HOJA DE RUTA EN COMISIÓN</h2>
+
+  <div class="meta">
+    <div class="box">
+      <div><b>Conductor:</b> ____________________</div>
+      <div><b>Cédula:</b> ____________________</div>
+      <div><b>Vehículo:</b> Toyota Hilux 4x4</div>
+      <div><b>Placa:</b> _________</div>
+    </div>
+    <div class="box">
+      <div><b>Comisión:</b> ____________________</div>
+      <div><b>A orden de:</b> INEC</div>
+      <div><b>Jefe de comisión:</b> Ing. Luis Fonseca</div>
+      <div><b>Periodo:</b> Oct‑2025</div>
+    </div>
+  </div>
+
+  <a class="btn no-print" href="#" onclick="window.print()">Descargar PDF</a>
+</header>
+
+<main>
+  <table id="tabla">
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>Destino(s)</th>
+        <th>Hora salida</th>
+        <th>Hora llegada</th>
+        <th>KM salida</th>
+        <th>KM llegada</th>
+        <th>Combustible (gal)</th>
+        <th>Valor (USD)</th>
+      </tr>
+    </thead>
+    <tbody id="rows"></tbody>
+    <tfoot>
+      <tr>
+        <td colspan="6" style="text-align:right">Totales</td>
+        <td id="tot_gal">0</td>
+        <td id="tot_val">0,00</td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <section style="margin-top:18px">
+    <h2>Observaciones</h2>
+    <div class="box" style="min-height:80px">____________________</div>
+  </section>
+
+  <section class="no-print" style="margin-top:18px">
+    <details>
+      <summary><b>Cómo editar:</b> cambia el arreglo <code>DATA</code> abajo con tus filas.</summary>
+      <p>Guarda el archivo y súbelo a GitHub Pages.</p>
+    </details>
+  </section>
+</main>
+
+<footer>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+    <div><div style="height:60px"></div><div style="border-top:1px solid #222;padding-top:4px">El conductor</div></div>
+    <div><div style="height:60px"></div><div style="border-top:1px solid #222;padding-top:4px">El jefe de la comisión</div></div>
+  </div>
+  <div style="margin-top:12px;color:#777;font-size:12px">© 2025 INEC • VDLPYL</div>
+</footer>
+
+<script>
+// Reemplaza estos datos con los de tu hoja. Cada objeto es una fila.
+const DATA = [
+  // Marca y verifica cada valor con tu hoja.
+  {fecha:"14/10/2025", destinos:"Ambato → Licán → Estadio Quindo", hs:"14:00", hl:"18:00", kms:238193, kml:238500, gal:36, usd:0},
+  {fecha:"15/10/2025", destinos:"Licán → Estadio Tambo", hs:"08:00", hl:"18:00", kms:238100, kml:238487, gal:24, usd:0},
+  {fecha:"16/10/2025", destinos:"Licán → Nizag → Palacio Real", hs:"08:00", hl:"18:00", kms:238147, kml:238205, gal:25, usd:0},
+  {fecha:"17/10/2025", destinos:"Licán → Kandana → Estadio Quindo → Kundana", hs:"08:00", hl:"20:35", kms:238203, kml:238409, gal:31, usd:0},
+  {fecha:"18/10/2025", destinos:"Licán → Pungullí → Guayaquil → Riobamba", hs:"10:00", hl:"18:40", kms:238305, kml:238492, gal:34, usd:0},
+  {fecha:"19/10/2025", destinos:"Licán → Palacio Real", hs:"08:00", hl:"18:00", kms:238497, kml:238552, gal:27, usd:0},
+  {fecha:"21/10/2025", destinos:"Licán → Riobamba", hs:"14:00", hl:"17:00", kms:238557, kml:238591, gal:27, usd:0},
+  {fecha:"22/10/2025", destinos:"Licán", hs:"13:00", hl:"14:30", kms:238581, kml:238560, gal:28, usd:0},
+  {fecha:"24/10/2025", destinos:"Licán → Ambato", hs:"17:00", hl:"20:00", kms:238650, kml:238742, gal:18, usd:0},
+];
+
+function render(){
+  const tbody = document.getElementById('rows');
+  tbody.innerHTML = "";
+  let g=0, v=0;
+  for(const r of DATA){
+    const tr = document.createElement('tr');
+    const cells = [
+      r.fecha, r.destinos, r.hs||"", r.hl||"",
+      (r.kms??"").toString(), (r.kml??"").toString(),
+      (r.gal??"").toString(), (r.usd??"").toString()
+    ];
+    for(const c of cells){
+      const td = document.createElement('td');
+      td.textContent = c;
+      tr.appendChild(td);
+    }
+    tbody.appendChild(tr);
+    g += Number(r.gal||0);
+    v += Number((r.usd||0));
+  }
+  document.getElementById('tot_gal').textContent = g.toLocaleString('es-EC');
+  document.getElementById('tot_val').textContent = v.toLocaleString('es-EC',{minimumFractionDigits:2,maximumFractionDigits:2});
+}
+render();
+</script>
+</html>
