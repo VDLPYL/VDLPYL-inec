@@ -73,7 +73,6 @@ h1 {
     </thead>
     <tbody id="rows"></tbody>
   </table>
-
   <section style="margin-top:18px">
     <h3>Observaciones</h3>
     <div class="box" style="min-height:80px">____________________</div>
@@ -112,11 +111,12 @@ const DATA = [
   {orden:"20", fecha:"3/11/2025", de:"Licán", destinos:"Riobamba → Gulac → Licán", hs:"8H30", kms:240857, hl:"17H47", kml:240945, rec:88},
   {orden:"21", fecha:"4/11/2025", de:"Licán", destinos:"Llin Llin → Riobamba → Licán", hs:"8H00", kms:240945, hl:"21H27", kml:241061, rec:116},
   {orden:"22", fecha:"5/11/2025", de:"Licán", destinos:"Ambato", hs:"12H00", kms:241061, hl:"15H00", kml:241125, rec:64},
-
-
+  {orden:"23", fecha:"10/11/2025", de:"Ambato", destinos:"Güantualó → Anchitondoloquin → Sigchos", hs:"8H00", kms:241314, hl:"21H00", kml:241475, rec:161},
+  {orden:"24", fecha:"11/11/2025", de:"Sigchos", destinos:"Pulagüango → Güantualó → Sigchos", hs:"8H00", kms:241475, hl:"19H00", kml:241554, rec:79},
 
 
 ];
+
 
 function render(){
   const tbody = document.getElementById('rows');
@@ -143,7 +143,7 @@ function render(){
 }
 render();
 </script>
-  <a class="btn no-print" href="#" onclick="window.print()">Descargar esta hoja en PDF</a>
+<a class="btn no-print" href="#" onclick="window.print()">Descargar esta hoja en PDF</a>
 <br><br><br>
 <!--Solo tienes que ser Persistente-->
 <h6>
