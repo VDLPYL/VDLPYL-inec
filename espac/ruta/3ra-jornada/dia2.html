@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>espac-3ra-jornada-dia2</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet-gpx"></script>
+<style>
+  #map { height: 100vh; width: 100%; margin: 0; padding: 0; }
+  body { margin: 0; }
+</style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+// Crear mapa centrado en el sendero
+var map = L.map('map').setView([-1.893973, -78.813119], 13);
+
+// Capa base
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map);
+
+// Cargar recorrido GPX
+new L.GPX('ruta-3ra-j/11_Nov._2025_8_07_51_AM.gpx', {
+
+  async: true,
+  marker_options: {
+    startIconUrl: 'https://unpkg.com/leaflet-gpx/pin-icon-start.png',
+    endIconUrl: 'https://unpkg.com/leaflet-gpx/pin-icon-end.png',
+    shadowUrl: 'https://unpkg.com/leaflet-gpx/pin-shadow.png'
+  }
+}).on('loaded', function(e) {
+  map.fitBounds(e.target.getBounds());
+}).addTo(map);
+
+// Marcador del punto del hallazgo
+/*
+L.marker([-1.893973, -78.813119]).addTo(map)
+  .bindPopup("<b>Alpaca recién nacida</b><br><img src='./png/alpaca1.png' width='150'><br>Coordenadas: -1.893973, -78.813119");
+
+// Marcador del inicio del sendero
+L.marker([-1.892712, -78.798792]).addTo(map)
+  .bindPopup("<b>Inicio del sendero</b><br><img src='./png/inicio-del-sendero.png' width='150'><br>Río Llin Llin gps{-1.892712, -78.798792}");
+/* inicio del sendero 240999 kms - 11278 ft sobre el nivel del mar - Llilli rio Pucará - 4 Nov. 2025 12:08:20 PM
+Velocidad: 0 mph Elevación: 11278 ft Tiempo desde inicio: 04:07:59 Distancia desde inicio: 33.89 mi
+*/
+
+</script>
+</body>
+</html>
